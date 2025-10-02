@@ -31,9 +31,36 @@ selenium_test/
     test_results.csv
     ```
 ## ✅ Test cases
-1. TC1 - Đăng nhập thành công
-2. TC2 - Sai mật khẩu
-3. TC3 - Sai username
-4. TC4 - Bỏ trống username hoặc password
-5. TC5 - Forgot Password
-6. TC6 - Social Login (ví dụ Facebook/instagram/email)
+
+1. Đăng nhập thành công ✅
+
+
+- Tên đăng nhập = admin, Mật khẩu = admin1234 → chuyển sang Dashboard.
+
+
+2. Sai Mật khẩu ✅
+
+- Tên đăng nhập đúng, mật khẩu sai → hiển thị thông báo “Sai mật khẩu!”.
+
+3. Sai Tên đăng nhập ✅
+
+
+- Tên đăng nhập sai → hiển thị “Tên đăng nhập hoặc mật khẩu không đúng!”.
+
+
+ 4. Bỏ trống trường ✅
+
+
+- Nếu để trống Tên đăng nhập hoặc Mật khẩu → hiển thị “Vui lòng nhập đầy đủ Username và Password!”.
+
+
+ 5. Link Forgot password? ✅
+
+
+- Có thể click (dẫn đến # tạm).
+
+
+ 6. Nút social login ✅
+
+
+- 3 nút hiển thị và có thể click được (Facebook, Google, Instagram).
