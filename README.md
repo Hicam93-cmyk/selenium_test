@@ -30,7 +30,7 @@ selenium_test/
     test_results.txt
     test_results.csv
     ```
-## ✅ Test cases
+## ✅ 6 Test cases
 
 1. Đăng nhập thành công ✅
 
