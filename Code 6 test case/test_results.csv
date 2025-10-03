@@ -1,0 +1,7 @@
+Test Case,Result
+TC1 - Đăng nhập thành công,PASS
+TC2 - Sai mật khẩu,PASS
+TC3 - Sai username,PASS
+TC4 - Bỏ trống,PASS
+TC5 - Forgot Password,PASS
+TC6 - Social Login,PASS
