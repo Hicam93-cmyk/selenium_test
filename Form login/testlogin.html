@@ -1,1 +1,345 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Cổng truyền thông số - Chuỗi Cafe T.G </title>
+  <style>
+* {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.admin-name {
+  font-size: 20px;   
+  font-weight: bold; 
+  margin: 5px 0;
+}
 
+/* Login Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#4E1F00;
+  width: 100%;
+  min-height: 100vh;  
+  background: url("cc.jpg") no-repeat center center;
+  background-size: cover;   
+}
+
+.login-box {
+  width: clamp(250px, 80%, 400px); 
+  padding: 2rem;
+  background: #F8F4E1;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Input */
+.login-box label {
+  display: block;
+  margin: 10px 0 5px;
+  text-align: left;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 8px 35px 8px 8px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #555;
+  font-size: 18px;
+}
+
+/* Remember */
+.remember {
+  margin: 10px 0;
+  text-align: left;  
+}
+
+/* Button */
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.buttons button {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #4caf50;
+  color: white;
+  font-size: 16px;
+}
+
+/* Divider "hoặc" */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  color: #555;
+  font-weight: bold;
+}
+.divider::before, .divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #aaa;
+}
+.divider:not(:empty)::before {
+  margin-right: 0.75em;
+}
+.divider:not(:empty)::after {
+  margin-left: 0.75em;
+}
+
+/* Social Login */
+.social-login {
+  margin-top: 10px;
+}
+.social-login button {
+  width: 100%;
+  margin: 5px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.social-login button i {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.facebook-btn { background: #3b5998; }
+.google-btn   { background: #db4437; }
+.instagram-btn { background: #E1306C; }
+
+/* Links dưới form */
+.extra-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+.extra-links a {
+  text-decoration: none;
+  color: #007bff;
+}
+.extra-links a:hover {
+  text-decoration: underline;
+}
+
+/* Dashboard */
+.hidden { display: none !important; }
+#dashboard {
+  display: none;
+  height: 100vh;
+}
+
+#dashboard:not(.hidden) {
+  display: flex;
+}
+
+.sidebar {
+  width: 270px;
+  background: #4E1F00;
+  color: white;
+  padding: 20px;
+}
+.sidebar h3 { text-align: center; margin: 20px 0; }
+.sidebar ul { list-style: none; margin-bottom: 20px; }
+.sidebar ul li { margin: 15px 0; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.2);}
+.sidebar ul li:last-child { border-bottom: none; }
+.sidebar ul li a { color: #F8F4E1; text-decoration: none; }
+.sidebar ul li a:hover { color: white; }
+.sidebar button {
+  width: 100%;
+  padding: 10px;
+  background: #f44336;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.content { flex: 1; padding: 30px; background: #F8F4E1; }
+.content h2 { margin-bottom: 15px; }
+
+.admin-profile {
+  display: flex; align-items: center; margin-bottom: 20px; padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+.admin-avatar { width: 50px; height: 50px; border-radius: 50%; margin-right: 10px; border: 2px solid #ffccbc; object-fit: cover; }
+.admin-info .admin-name { font-weight: bold; color: #fff; }
+.admin-info .admin-settings { font-size: 0.85rem; color: #ffccbc; text-decoration: underline; cursor: pointer; }
+.admin-info .admin-settings:hover { color: #ffffff; }
+  </style>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Form Login -->
+<div id="login-container" class="container">
+  <form id="loginForm" class="login-box">
+      <div class="logo-wrapper">
+        <img src="logo.jpeg" alt="Logo TG Cafe" style="max-width:120px;margin-bottom:10px;">
+      </div>
+      <h2>Đăng nhập</h2>
+
+      <!-- Div hiển thị lỗi -->
+      <div id="errorMsg" style="color:red; margin-top:10px;"></div>
+
+      <label for="username">Tên đăng nhập</label>
+      <input type="text" id="username">
+
+      <label for="password">Mật khẩu</label>
+      <div class="input-wrapper">
+        <input type="password" id="password">
+        <i class="fa-solid fa-eye toggle-password" id="togglePassword"></i>
+      </div>
+
+      <div class="remember">
+        <input type="checkbox" id="rememberMe">
+        <label for="rememberMe">Ghi nhớ đăng nhập</label>
+      </div>
+
+      <div class="buttons">
+        <button type="submit" id="loginBtn">Đăng nhập</button>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider">hoặc</div>
+
+      <!-- Social Login Buttons -->
+      <div class="social-login">
+        <button type="button" class="facebook-btn" id="fbBtn" onclick="window.location.href='/social/facebook'">
+          <i class="fab fa-facebook-f"></i> Đăng nhập bằng Facebook
+        </button>
+        <button type="button" class="google-btn" id="ggBtn" onclick="window.location.href='/social/google'">
+          <i class="fab fa-google"></i> Đăng nhập bằng Google
+        </button>
+        <button type="button" class="instagram-btn" id="igBtn" onclick="window.location.href='/social/instagram'">
+          <i class="fab fa-instagram"></i> Đăng nhập bằng Instagram
+        </button>
+      </div>
+
+      <!-- Extra links -->
+      <div class="extra-links">
+        <a href="/forgot-password" id="forgotPwd">Quên mật khẩu?</a>
+        <a href="/signup" id="signUp">Đăng ký</a>
+      </div>
+  </form>
+</div>
+
+<!-- Dashboard -->
+<div id="dashboard" class="hidden">
+  <aside class="sidebar">
+    <div class="admin-profile">
+      <img src="avta.jpg" alt="Admin Avatar" class="admin-avatar">
+      <div class="admin-info">
+        <p class="admin-name">☕ Cafe T.G</p>
+        <a href="#" class="admin-settings">Quản lý tài khoản</a>
+      </div>
+    </div>
+    <ul>
+      <li><a href="#" onclick="showSection('posts')">Quản lý Bài viết</a></li>
+      <li><a href="#" onclick="showSection('menu')">Quản lý Menu</a></li>
+      <li><a href="#" onclick="showSection('customers')">Quản lý Khách hàng</a></li>
+      <li><a href="#" onclick="showSection('stats')">Báo cáo & Thống kê</a></li>
+    </ul>
+    <button onclick="logout()">Đăng xuất</button>
+  </aside>
+
+  <main class="content">
+    <h2 id="section-title">Chào mừng bạn đến với hệ thống</h2>
+    <div id="section-content">
+      <p>Vui lòng chọn một chức năng từ menu bên trái để quản trị.</p>
+    </div>
+  </main>
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const user = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
+  const errorDiv = document.getElementById("errorMsg");
+  errorDiv.innerText = "";
+
+  if(user === "" || pass === ""){
+    errorDiv.innerText = "Vui lòng nhập đầy đủ Username và Password!";
+    return;
+  }
+  
+  // Kiểm tra login giả lập
+  if(user === "admin" && pass === "admin1234"){
+    // Login thành công
+    document.getElementById("login-container").classList.add("hidden");
+    document.getElementById("dashboard").classList.remove("hidden");
+    document.getElementById("section-title").innerText = "Xin chào, " + user;
+  } 
+  else if(user === "admin" && pass !== "admin1234"){
+    // Username đúng nhưng password sai
+    errorDiv.innerText = "Sai mật khẩu!";
+  }
+  else {
+    // Username sai
+    errorDiv.innerText = "Tên đăng nhập hoặc mật khẩu không đúng!";
+  }
+});
+
+// Toggle password
+const togglePassword = document.getElementById("togglePassword");
+const passwordInput = document.getElementById("password");
+togglePassword.addEventListener("click", function () {
+  const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+  passwordInput.setAttribute("type", type);
+  this.classList.toggle("fa-eye-slash");
+});
+
+function showSection(section){
+  const title = document.getElementById("section-title");
+  const content = document.getElementById("section-content");
+  switch(section){
+    case "posts": title.innerText="Quản lý Bài viết"; content.innerHTML="<p>Danh sách bài viết quảng bá cafe sẽ hiển thị ở đây...</p>"; break;
+    case "menu": title.innerText="Quản lý Menu"; content.innerHTML="<p>Danh sách sản phẩm đồ uống sẽ hiển thị ở đây...</p>"; break;
+    case "customers": title.innerText="Quản lý Khách hàng"; content.innerHTML="<p>Thông tin khách hàng thân thiết sẽ hiển thị ở đây...</p>"; break;
+    case "stats": title.innerText="Thống kê"; content.innerHTML="<p>Biểu đồ doanh thu, lượt check-in sẽ hiển thị ở đây...</p>"; break;
+  }
+}
+
+function logout(){
+  document.getElementById("dashboard").classList.add("hidden");
+  document.getElementById("login-container").classList.remove("hidden");
+}
+
+</script>
+</body>
+</html>
